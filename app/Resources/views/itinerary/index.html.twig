@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    {% trans_default_domain 'itinerary' %}
+
+    {% for row in itineraries|batch(4) %}
+        <div class="row">
+            {% for itinerary in row %}
+                {% include 'itinerary/_itinerary_list.html.twig' %}
+            {% endfor %}
+        </div>
+    {% else %}
+        {{ 'public.list.empty'|trans({},'itinerary') }}
+    {% endfor %}
+{% endblock %}

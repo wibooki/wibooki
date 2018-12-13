@@ -1,0 +1,138 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    {% trans_default_domain 'search' %}
+    <h1>{{ 'title'|trans({'%key%':key}) }}</h1>
+
+    <h2>{{ 'itinerary.title'|transchoice(itineraries|length) }}</h2>
+    {% for row in itineraries|batch(3) %}
+        <div class="row">
+            {% for itinerary in row %}
+                {% include 'itinerary/_itinerary_list.html.twig' %}
+                {#<a href="{{ path('itinerary_show', { 'slug': itinerary.slug }) }}">#}
+                    {#<div class="col-md-3 itinerary-cell rounded-border-content">#}
+                        {#<img src="{{ asset('images/profile/default-itinerary.png') }}" alt="{{ itinerary.title }}"/>#}
+                        {#<h3>{{ itinerary.title }}</h3>#}
+                        {#<p>{{ itinerary.description|truncate(50)|raw }}</p>#}
+                        {#<p>{{ itinerary.description|raw }}</p>#}
+                        {#<span class="pull-left s12 m6">#}
+                            {#<a href="">@{{ itinerary.user.username }}</a>#}
+                        {#</span>#}
+                        {#<span class="pull-right s12 m6 price">#}
+                            {#{% if itinerary.paid %}#}
+                                {#{{ itinerary.price }}€#}
+                            {#{% else %}#}
+                                {#{{ 'form.free.value'|trans({},'itinerary')|upper }}#}
+                            {#{% endif %}#}
+                        {#</span>#}
+                    {#</div>#}
+                {#</a>#}
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    <h2>{{ 'content.title'|transchoice(contents|length) }}</h2>
+    {% for row in contents|batch(3) %}
+        <div class="row">
+            {% for content in row %}
+                {% include 'content/_content_list.html.twig' %}
+                {#<a href="{{ path('itinerary_show', { 'slug': content.itinerary.slug }) }}">#}
+                    {#<div class="col-md-3 itinerary-cell rounded-border-content">#}
+                        {#<div class="row">#}
+                            {#{% if content.user == app.user %}#}
+                                {#<a href="{{ path('content_edit', { 'id': content.id }) }}">#}
+                                    {#<img src="{{ asset('images/profile/default-contenido.svg') }}" alt="Contenido"/>#}
+                                    {#{{ content.title }}<br/>#}
+                                    {#{{ content.description }}#}
+                                {#</a>#}
+                            {#{% elseif content.demo == true %}#}
+                                {#<a href="{{ path('content_show', { 'slug': content.slug }) }}">#}
+                                    {#<img src="{{ asset('images/profile/default-contenido.svg') }}" alt="Contenido"/>#}
+                                    {#{{ content.title }}<br/>#}
+                                    {#{{ content.description }}#}
+                                {#</a>#}
+                            {#{% else %}#}
+                                {#<img src="{{ asset('images/profile/default-contenido.svg') }}" alt="Contenido"/>#}
+                                {#{{ content.title }}<br/>#}
+                                {#{{ content.description }}#}
+                            {#{% endif %}#}
+                            {#<a href="{{ path('content_edit', { 'id': content.id }) }}">#}
+                                {#<img src="{{ asset('images/profile/default-contenido.svg') }}" alt="Contenido"/>#}
+                                {#{{ content.title }}<br/>#}
+                                {#{{ content.description }}#}
+                            {#</a>#}
+                        {#<div class="row">#}
+                            {#<div class="col-xs-3 itinerary-content-list-icon">#}
+                                {#<img class="img-responsive img-center " src="{{ asset('images/profile/default-itinerary.png') }}">#}
+                            {#</div>#}
+                            {#<div class="col-xs-12">#}
+                                {#Forma parte de:<br/>#}
+                                {#{% for itinerary in content.itineraries %}#}
+                                    {#<a href="{{ path('itinerary_show', { 'slug': itinerary.slug }) }}">#}
+                                        {#{{ itinerary.title }}#}
+                                    {#</a>#}
+                                {#{% endfor %}#}
+                            {#</div>#}
+                        {#</div>#}
+                            {#<span class="pull-left s12 m6">#}
+                                {#<a href="">@{{ content.user.username }}</a>#}
+                            {#</span>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</a>#}
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    <h2>{{ 'user.title'|transchoice(users|length) }}</h2>
+    {% for row in users|batch(3) %}
+        <div class="row">
+            {% for user in row %}
+                <a href="{{ path('user_view', { 'username': user.username }) }}">
+                    <div class="col-sm-4 rounded-border-content">
+
+                        <div class="row profile-avatar">
+                            <div class="col-sm-12">
+                                {% if user is defined and user.getProfilePicturePath() is not empty %}
+                                    <img class="img-responsive img-center" src="{{ user.getWebProfilePicturePath() }}">
+                                {% else %}
+                                    <img class="img-responsive img-center" src="{{ asset('images/profile/gravatar.svg') }}">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row profile-type-account">
+                            <div class="col-xs-4 padding-account-type">
+
+                            </div>
+                            <div class="col-xs-4 padding-account-type">
+                                {% if user.premiumAccount is defined and user.premiumAccount is not empty %}
+                                    <img class="img-responsive img-center" src="{{ asset('images/profile/gravatar-premium.svg') }}">
+                                {% endif %}
+                            </div>
+                            <div class="col-xs-4 padding-account-type">
+                                {% if user.sponsorshipAccount is defined and user.sponsorshipAccount is not empty %}
+                                    <img class="img-responsive img-center" src="{{ asset('images/profile/gravatar-patrocinio.svg') }}">
+                                {% endif %}
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <p>
+                                    {{ user.username }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>
+                                    {{ user.description }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}

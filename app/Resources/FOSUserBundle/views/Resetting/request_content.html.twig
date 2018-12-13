@@ -1,0 +1,24 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="jumbotron vertical-center">
+    <div class="container text-center">
+        <div class="col-sm-12 register-container">
+            <div class="center-block wide-box-form">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Restablecer contraseña</div>
+                    <div class="panel-body">
+                        <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request homepage form-horizontal">
+                            <div class="input-field col s12 ">
+                                <input class="form-control" type="text" id="username" name="username" required="required" placeholder="{{ 'resetting.request.username'|trans }}"/>
+                            </div>
+                            <div align="center" class="button-wrap">
+                                <button class="btn-m btn-primary" type="submit" name="action">
+                                    {{ 'resetting.request.submit'|trans }}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

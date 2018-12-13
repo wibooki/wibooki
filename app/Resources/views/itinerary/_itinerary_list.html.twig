@@ -1,0 +1,30 @@
+<div class="col-sm-3">
+    <a href="{{ path('itinerary_show', { 'slug': itinerary.slug }) }}">
+        <div class="col-md-12 itinerary-cell rounded-border-content">
+            <div class="col-sm-4 add-button">
+                <img class="img-center" src="{{ asset('images/icons/default-itinerary.svg') }}" alt="{{ itinerary.title }}"/>
+            </div>
+            <div class="col-sm-8">
+                <h3>{{ itinerary.title }}</h3>
+                {#<p>{{ itinerary.description|truncate(50)|raw }}</p>#}
+            </div>
+            <div class="col-sm-12">
+                <p>{{ itinerary.description|raw }}</p>
+                <span class="pull-left s12 m6 price">
+                    @{{ itinerary.user.username }}
+                </span>
+                <span class="pull-right s12 m6 price">
+                    {% if itinerary.parent %}
+                        {{ 'form.private.value'|trans({},'itinerary')|upper }}
+                    {% else %}
+                        {% if itinerary.paid %}
+                            {{ itinerary.price }}€
+                        {% else %}
+                            {{ 'form.free.value'|trans({},'itinerary')|upper }}
+                        {% endif %}
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </a>
+</div>

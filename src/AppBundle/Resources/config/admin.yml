@@ -1,0 +1,28 @@
+services:
+    app.admin.user:
+        class: AppBundle\Admin\UserAdmin
+        arguments: [~, AppBundle\Entity\User, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: User }
+        public: true
+
+    app.admin.content:
+        class: AppBundle\Admin\ContentAdmin
+        arguments: [~, AppBundle\Entity\Content, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Content }
+        public: true
+
+    app.admin.itinerary:
+        class: AppBundle\Admin\ItineraryAdmin
+        arguments: [~, AppBundle\Entity\Itinerary, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Itinerary }
+        public: true
+
+    app.admin.payment:
+        class: AppBundle\Admin\PaymentAdmin
+        arguments: [~, AppBundle\Entity\Payment, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Payment }
+        public: true

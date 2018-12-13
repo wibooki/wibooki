@@ -1,0 +1,50 @@
+/**
+ * ==============================================================
+ * EOS - RESPONSIVE BOOTSTRAP MOBILE APP LANDING PAGE TEMPLATE
+ * ==============================================================
+ */
+
+/**
+ * ========================================
+ * GENERAL STYLES
+ * ========================================
+ */
+
+html {
+	height: 100% !important;
+}
+body {
+	font-family: 'Titillium Web', sans-serif;
+	color: #505050;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 20px;
+	text-align: left;
+	margin-bottom: 10px;
+
+}
+a {
+	color: #94bd0d;
+	text-decoration: none;
+
+}
+a:hover {
+	color: #b4c80f;
+	text-decoration: none;
+	outline: 0;
+}
+
+p, ul {
+	margin-bottom: 10px;
+}
+
+
+h1 {
+	font-family: 'Montserrat', sans-serif;
+	color: #000000;
+	font-weight: 700;
+	font-size: 35px;
+	line-height: 37px;
+	text-align: center;
+	margin-bottom: 30px;
+}

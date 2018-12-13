@@ -1,0 +1,55 @@
+<div id="itinerariesCreationPopup" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="gridSystemModalLabel">Nuevo itinerario</h2>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        {{ form_start(itinerary_form, { 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+                        <div class="input-field col s12 {% if form_errors(itinerary_form.title) %}has-error{% endif %}">
+                            {{ form_widget(itinerary_form.title, { 'attr': {'class':'form-control', 'placeholder': 'Título', 'required' : true}}) }}
+                        </div>
+
+                        <div class="input-field col s12 {% if form_errors(itinerary_form.description) %}has-error{% endif %}">
+                            {{ form_widget(itinerary_form.description, { 'attr': {'maxlength' : '254', 'rows' : '5', 'class':'form-control', 'placeholder': 'Descripción', 'required' : false}}) }}
+                        </div>
+
+                        <div class="input-field col s12 {% if form_errors(itinerary_form.paid) %}has-error{% endif %}">
+                            {{ form_widget(itinerary_form.paid, { 'attr': {'class':'form-control', 'required' : false}}) }}
+                        </div>
+
+                        <div id="priceBox" class="input-field col s12 m6 pull-right {% if form_errors(itinerary_form.price) %}has-error{% endif %}" style="display: none;">
+                            {{ form_widget(itinerary_form.price, { 'attr': {'class':'form-control', 'required' : false}}) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                    Cerrar
+                </button>
+                <button type="submit" class="btn btn-default">
+                    Guardar
+                </button>
+            </div>
+            {{ form_end(itinerary_form) }}
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    if ($('input[name="appbundle_itinerary[price]"]').val() > 0) {
+        $('#priceBox').show();
+    }
+    $('input[name="appbundle_itinerary[paid]"]').change(function (e) {
+        if ($(this).val() == 1) {
+            $('#priceBox').show();
+        }
+        else {
+            $('#priceBox').hide();
+        }
+    })
+</script>

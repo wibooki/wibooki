@@ -1,0 +1,54 @@
+# sonata configuration
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+        # ...
+
+sonata_admin:
+    templates:
+        layout: admin/layout.html.twig
+#        layout: layout.sb-admin.html.twig
+
+    title:      "%admin.dashboard.title%"
+    title_logo: "%admin.dashboard.logo%"
+
+    security:
+        handler: sonata.admin.security.handler.role
+        
+    options:
+        confirm_exit: true    # enabled confirmation when quitting with unsaved changes
+        dropdown_number_groups_per_colums: 2 
+                              # max items per column in dropdown menu (add button in top nav)
+        html5_validate: true  # use html5 validation
+        pager_links: 5        # pager max links to display
+        title_mode: 'both'    # 'both', 'single_text' or 'single_image'
+        use_select2: false     # enable select2
+        use_icheck: true      # enable iCheck
+
+    dashboard:
+        blocks:
+            
+        groups:
+
+            sonata.admin.group.itineraries:
+                label: itineraries.menu.title.manager
+                label_catalogue: admin
+                icon: '<i class="fa fa-file-code-o"></i>'
+                items:
+                    - app.admin.itinerary
+                    - app.admin.content
+
+            sonata.admin.group.users:
+                label: user.menu.title.manager
+                label_catalogue: admin
+                icon: '<i class="fa fa-user-circle-o"></i>'
+                items:
+                    - app.admin.payment
+                    - app.admin.user
+
+twig:
+    form_themes:
+        - 'SonataCoreBundle:Form:datepicker.html.twig'

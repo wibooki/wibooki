@@ -1,0 +1,290 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    <div id="itinerariesNewPopup" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <form action="{{ path('booking_buy',{'slug':itinerary.slug}) }}" method="POST">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="gridSystemModalLabel">{{ 'buy.popup.title'|trans() }}</h2>
+                    </div>
+                    <div class="modal-body">
+                        {% if itinerary.paid %}
+                            <div class="row">
+                                <div class="col-sm-6">{{ 'buy.popup.paid.title'|trans({},'itinerary')|upper }}</div>
+                                <div class="col-sm-6">{{ itinerary.price }} €
+                                    <br>
+                                    {{ 'buy.popup.paid.iva'|trans({},'itinerary') }}
+                                </div>
+                            </div>
+                            <h3>{{ 'buy.popup.method.title'|trans({},'itinerary')|upper }}</h3>
+                            <input type="radio" checked title="payment">{{ 'buy.popup.method.paypal'|trans({},'itinerary') }}
+                            <br>
+                            <br>
+                            <p>
+                                {{ 'buy.popup.method.description'|trans({},'itinerary') }}
+                            </p>
+                            <p>
+                                {{ 'buy.popup.method.accept'|trans({},'itinerary') }}
+                            </p>
+                            <input type="checkbox" required title="terms">{{ 'buy.popup.method.terms'|trans({},'itinerary')|raw }}
+                        {% else %}
+                            <h3>{{ 'buy.popup.free.title'|trans({},'itinerary')|upper }}</h3>
+                            <p>{{ 'buy.popup.free.description'|trans({},'itinerary') }}</p>
+                        {% endif %}
+                        {#<div class="row">#}
+                            {#<div class="col-sm-8">#}
+                                {#El itinerario se eliminará definitivamente.#}
+                            {#</div>#}
+                            {#<div class="col-sm-4">#}
+                                {#<img class="img-center" src="{{ asset('images/warning-eye.svg') }}" alt="Alerta"/>#}
+                            {#</div>#}
+                        {#</div>#}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default"
+                                data-dismiss="modal">
+                            Cancelar
+                        </button>
+                        {% if itinerary.paid %}
+                            <button type="submit" class="btn btn-default btn-wibooki">
+                                Aceptar
+                            </button>
+                        {% else %}
+                            <button type="submit" class="btn btn-default btn-wibooki">
+                                Aceptar
+                            </button>
+                        {% endif %}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="itinerariesDeletePopup" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="gridSystemModalLabel">Alerta</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            El itinerario se eliminará definitivamente.
+                        </div>
+                        <div class="col-sm-4">
+                            <img class="img-center" src="{{ asset('images/warning-eye.svg') }}" alt="Alerta"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{ form_start(delete_form) }}
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-default btn-wibooki">
+                        Aceptar
+                    </button>
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {#<div id="itinerarieseditionpopup" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">#}
+        {#<div class="modal-dialog modal-sm" role="document">#}
+            {#<div class="modal-content">#}
+                {#<div class="modal-header">#}
+                    {#<h2 class="modal-title" id="gridSystemModalLabel">Editar itinerario</h2>#}
+                {#</div>#}
+                {#<div class="modal-body">#}
+                    {#<div class="row">#}
+                        {#<div class="col-sm-12">#}
+                            {#{{ form_start(itinerary_edit_form, { 'action': path('itinerary_edit', {'id': itinerary.id}), 'attr': { 'class': 'fos_user_profile_edit' } }) }}#}
+                            {#<div class="input-field col s12 {% if form_errors(itinerary_edit_form.title) %}has-error{% endif %}">#}
+                                {#{{ form_widget(itinerary_edit_form.title, { 'attr': {'class':'form-control', 'placeholder': 'Título', 'required' : true}}) }}#}
+                            {#</div>#}
+
+                            {#<div class="input-field col s12 {% if form_errors(itinerary_edit_form.description) %}has-error{% endif %}">#}
+                                {#{{ form_widget(itinerary_edit_form.description, { 'attr': {'maxlength' : '254', 'rows' : '5', 'class':'form-control', 'placeholder': 'Descripción', 'required' : false}}) }}#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<div class="modal-footer">#}
+                    {#<button type="button" class="btn btn-default"#}
+                            {#data-dismiss="modal">#}
+                        {#Cerrar#}
+                    {#</button>#}
+                    {#<button type="submit" class="btn btn-default">#}
+                        {#Guardar#}
+                    {#</button>#}
+                {#</div>#}
+                {#{{ form_end(itinerary_edit_form) }}#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+
+    {% include "itinerary/_new_modal.html.twig" %}
+
+    <div class="fos_user_user_show content">
+        <div class="row">
+            <div class="col-xs-5 col-sm-3 left-column">
+                <div class="col-sm-12 rounded-border-content">
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <p>
+                            <div class="col-sm-12">
+                                <img class="img-responsive img-center content-creation-icon" src="{{ asset('images/icons/default-itinerary.svg') }}">
+                            </div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {#<span>{{ itinerary.title }}</span>#}
+                            {#<br/>#}
+                            {#<span>{{ itinerary.description }}</span>#}
+                            <h1>{{ itinerary.title }}</h1>
+                            <h2>{{ itinerary.description|raw }}</h2>
+                            <span class="pull-left s12 m6 price">
+                                <a href="{{ path('user_view',{'username':itinerary.user.username}) }}">
+                                @{{ itinerary.user.username }}
+                                </a>
+                            </span>
+                            <span class="pull-right s12 m6 price">
+                                {% if isCopied == true %}
+                                    {{ 'form.copied.value'|trans({},'itinerary')|upper }}
+                                {% else %}
+                                    {% if itinerary.parent %}
+                                        {{ 'form.private.value'|trans({},'itinerary')|upper }}
+                                    {% else %}
+                                        {% if itinerary.paid %}
+                                            {{ itinerary.price }}€
+                                        {% else %}
+                                            {{ 'form.free.value'|trans({},'itinerary')|upper }}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                    {#<div class="row">#}
+                        {#<div class="col-sm-12 itinerary-content-list">#}
+                            {#<ul>#}
+                                {#{% for content in itinerary.contents %}#}
+                                    {#<li>#}
+                                        {#{{ content.title }}#}
+                                    {#</li>#}
+                                {#{% endfor %}#}
+                            {#</ul>#}
+                        {#</div>#}
+                    {#</div>#}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p class="content-action-buttons">
+                                {% if itinerary.user == app.user %}
+                                    <a data-toggle="modal" href="#" data-target="#itinerariesCreationPopup">
+                                        <button type="button" class="btn btn-wibooki"
+                                                data-dismiss="modal">
+                                            {{ 'button.edit'|trans({},'itinerary')|upper }}
+                                        </button>
+                                    </a>
+                                    <a data-toggle="modal" href="#" data-target="#itinerariesDeletePopup">
+                                        <button type="button" class="btn btn-danger"
+                                                data-dismiss="modal">
+                                            {{ 'button.delete'|trans({},'itinerary')|upper }}
+                                        </button>
+                                    </a>
+                                    {#<a href="{{ path('fos_user_profile_show') }}">#}
+                                        {#<button type="button" class="btn btn-default"#}
+                                                {#data-dismiss="modal">#}
+                                            {#{{ 'button.back'|trans({},'itinerary')|upper }}#}
+                                        {#</button>#}
+                                    {#</a>#}
+                                {% elseif isCopied == false %}
+                                    {%  if app.user %}
+                                    <a data-toggle="modal" href="#" data-target="#itinerariesNewPopup">
+                                        <button type="button" class="btn btn-wibooki"
+                                                data-dismiss="modal">
+                                            {{ 'button.buy'|trans({},'itinerary')|upper }}
+                                        </button>
+                                    </a>
+                                    {% else %}
+                                        <a href="{{ path('fos_user_security_login') }}" class="btn btn-wibooki">
+                                            {{ 'button.login'|trans({},'itinerary')|raw }}
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-7 col-sm-9">
+                {% if app.session is not null and app.session.started %}
+                    {% for label, messages in app.session.flashbag.all %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ label }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+                <div class="col-sm-12 rounded-border-content">
+                    <div class="row">
+                        {% if itinerary.user == app.user %}
+                            <div class="col-sm-3">
+                                <div class="col-sm-12 rounded-border-content add-button">
+                                    <a data-toggle="modal" href="{{ path('content_new_itinerary',{'iId':itinerary.id}) }}">
+                                        <img class="img-center" src="{{ asset('images/icons/add-content.svg') }}" alt="Añadir"/>
+                                        <p style="text-align: center;">Nuevo contenido</p>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% for row in itinerary.contents|batch(3) %}
+                            {% for content in row %}
+                                {% include 'content/_content_list.html.twig' %}
+                                {#<div class="col-md-3 itinerary-cell rounded-border-content">#}
+                                    {#<div class="row">#}
+                                        {#{% if itinerary.user == app.user %}#}
+                                            {#<a href="{{ path('content_edit', { 'id': content.id }) }}">#}
+                                                {#<img src="{{ asset('images/profile/default-contenido.svg') }}" alt="Contenido"/>#}
+                                                {#{{ content.title }}<br/>#}
+                                                {#{{ content.description }}#}
+                                            {#</a>#}
+                                        {#{% elseif content.demo == true %}#}
+                                            {#<a href="{{ path('content_show', { 'slug': content.slug }) }}">#}
+                                                {#<img src="{{ asset('images/profile/default-contenido.svg') }}" alt="Contenido"/>#}
+                                                {#{{ content.title }}<br/>#}
+                                                {#{{ content.description }}#}
+                                            {#</a>#}
+                                        {#{% else %}#}
+                                            {#<img src="{{ asset('images/profile/default-contenido.svg') }}" alt="Contenido"/>#}
+                                            {#{{ content.title }}<br/>#}
+                                            {#{{ content.description }}#}
+                                        {#{% endif %}#}
+                                        {#{% if content.parent %}#}
+                                            {#{{ 'form.private.value'|trans({},'itinerary')|upper }}#}
+                                        {#{% endif %}#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {% endfor %}
+                        {% else %}
+                            <div class="col-sm-12 col-md-9">
+                                <h3>Este itinerario está vacío.</h3>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {#<script src="{{ asset('js/addItineraryLink.js'|asset_version) }}"></script>#}
+
+{% endblock %}

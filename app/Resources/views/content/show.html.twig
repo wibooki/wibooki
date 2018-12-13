@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    <div class="fos_user_user_show content">
+        <div class="row">
+            <div class="col-xs-5 col-sm-3 left-column">
+                <div class="col-sm-12 rounded-border-content">
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <p>
+                            <div class="col-sm-12">
+                                <img class="img-responsive img-center content-creation-icon" src="{{ asset('images/icons/default-content.svg') }}">
+                            </div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h1>{{ content.title }}</h1>
+                        <h2>{{ content.description|raw }}</h2>
+                    </div>
+                    {#<div class="row">#}
+                        {#<div class="col-sm-12">#}
+                            {#<p>#}
+                            {#<div class="input-field col s12">#}
+                                {#{{ content.description }}#}
+                            {#</div>#}
+                            {#</p>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="row">#}
+                        {#<div class="col-sm-12">#}
+                            {#<p>#}
+                            {#<div class="input-field col s12">#}
+                                {#Fecha de creación<br/>#}
+                                {#{% if content.creationDate %}{{ content.creationDate|date('d-m-Y H:i') }}{% endif %}#}
+                            {#</div>#}
+                            {#</p>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="row">#}
+                        {#<div class="col-sm-12">#}
+                            {#<p>#}
+                            {#<div class="input-field col s12">#}
+                                {#Última modificación<br/>#}
+                                {#{% if content.lastModificationDate %}{{ content.lastModificationDate|date('d-m-Y H:i') }}{% endif %}#}
+                            {#</div>#}
+                            {#</p>#}
+                        {#</div>#}
+                    {#</div>#}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            <div class="input-field col s12">
+                                Itinerarios <br/>
+                                {% if content.itineraries is empty %}
+                                    No incluido en ningún itinerario.
+                                {% else %}
+                                    <ul>
+                                    {% for itinerary in content.itineraries %}
+                                        <li><a href="{{ path('itinerary_show',{'slug':itinerary.slug}) }}">{{ itinerary.title }}</a></li>
+                                    {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% if content.user == app.user %}
+                            <div class="content-action-buttons col-sm-12">
+                                <a href="{{ path('content_edit', { 'id': content.id }) }}">
+                                    <button type="button" class="btn btn-wibooki"
+                                            data-dismiss="modal">
+                                        Editar
+                                    </button>
+                                </a>
+                            </div>
+                            {#<div class="content-action-buttons col-sm-6">#}
+                                {#<a href="{{ path('fos_user_profile_show') }}">#}
+                                    {#<button type="button" class="btn btn-default"#}
+                                            {#data-dismiss="modal">#}
+                                        {#Volver#}
+                                    {#</button>#}
+                                {#</a>#}
+                            {#</div>#}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-7 col-sm-9">
+                <div class="col-sm-12 rounded-border-content">
+                    {% autoescape %}
+                        {{ content.contentText|raw }} {# var won't be escaped #}
+                    {% endautoescape %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

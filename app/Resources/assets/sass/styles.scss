@@ -1,0 +1,773 @@
+// Variables *******************************************************************
+// Fonts
+$mainFont: 'Titillium Web', sans-serif;
+$secondaryFont: 'Montserrat', sans-serif;
+
+// Colors
+$wibookiGreen: #94bd0d;
+$wibookiGreen2: #B4C80F;
+$wibookiGreen3: #8DB724;
+
+$black: #000000;
+$white: #ffffff;
+$brokenWhite: #f5f5f5;
+$lightGrey: #c7c7c7;
+$grey: #505050;
+
+// Reset CSS *******************************************************************
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  padding-top: 75px;
+  font-family: $mainFont;
+  font-weight: 400;
+  color: $grey;
+  font-size: 16px;
+  line-height: 20px;
+  height: 100%;
+}
+
+a {
+  color: $wibookiGreen;
+  text-decoration: none;
+
+}
+a:hover,
+a:focus {
+  color: #b4c80f;
+  text-decoration: none;
+  outline: 0;
+}
+
+p, ul {
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-family: $secondaryFont;
+  color: $black;
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 37px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-family: $secondaryFont;
+  color: $black;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 22px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-family: $mainFont;
+  color: $black;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-family: $mainFont;
+  color: #c8c8c8;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+h5 {
+  font-family: $mainFont;
+  color: $grey;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+h6 {
+  font-family: $mainFont;
+  color: $grey;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-family: $mainFont;
+  font-size: 12px;
+}
+
+@font-face {
+  font-family: 'CC-ICONS';
+  font-style: normal;
+  font-weight: normal;
+  src: url('https://mirrors.creativecommons.org/presskit/cc-icons.ttf') format('truetype');
+}
+
+span.cc {
+  font-family: 'CC-ICONS';
+}
+
+// Similar to the following version https://v4-alpha.getbootstrap.com/utilities/spacing/
+// spacing - padding bottom
+.pb-20 {
+  padding-bottom: 20px;
+}
+
+.pt-20 {
+  padding-top: 20px;
+}
+
+// OVERRIDE BOOTSTRAP ELEMENTS *************************************************
+.nav > li > a {
+  display: inline;
+  margin-bottom: inherit;
+}
+.nav > li {
+  margin: 10px 0px;
+}
+
+.navbar-nav {
+  margin: 10px;
+}
+
+.navbar-nav > li > .dropdown-menu {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.navbar {
+  background-color: $white;
+  border-color: transparent;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+
+.navbar-header {
+  padding: 0px 15px;
+}
+
+.navbar-brand {
+  padding: 0;
+  margin: 8px 0 0 15px;
+}
+
+.navbar-default .navbar-collapse {
+  border-color: transparent;
+}
+
+.nav-tabs > li, .nav-pills > li {
+  float:none;
+  display:inline-block;
+  *display:inline; /* ie7 fix */
+  zoom:1; /* hasLayout ie7 trigger */
+}
+
+.nav-tabs, .nav-pills {
+  text-align:center;
+}
+
+.collapse.in {
+  overflow-y: hidden;
+}
+.container {
+  padding: 25px;
+
+  .jumbotron {
+    padding: 0;
+  }
+}
+
+.form-control::-moz-placeholder {
+  color: #999;
+  opacity: 1;
+}
+.form-control:-ms-input-placeholder {
+  color: #999;
+}
+.form-control::-webkit-input-placeholder {
+  color: #999;
+}
+
+.form-control {
+  margin: 10px 0px;
+  font-size: 16px;
+  height: 35px;
+  border-radius: 10px;
+
+  display: block;
+  width: 100%;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  text-align: center;
+}
+
+.form-control:focus {
+  border-color: $wibookiGreen;
+  outline: 0;
+
+}
+
+.has-error .form-control {
+  border-color: rgb(235,80,95);
+  border-width: 2px;
+}
+
+.panel {
+  text-align: center;
+  font-family: $mainFont;
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: $brokenWhite;
+}
+
+.panel-default > .panel-heading {
+  border-radius: 10px 10px 0px 0px;
+  color: #333;
+  background-color: $brokenWhite;
+  border-color: #ddd;
+}
+
+.panel-footer {
+  padding: 10px 15px;
+  background-color: $brokenWhite;
+  border-top: 1px solid #ddd;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.btn {
+  padding: 14px 24px;
+  border: 0 none;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  font-size: 18px;
+  height: 35px;
+  width:100%;
+  border-radius: 10px;
+  background: $wibookiGreen;
+  border-color: $wibookiGreen;
+  color: #ffffff;
+  border-style: none;
+}
+
+.btn-secondary {
+  height: 35px;
+  width:100%;
+  border-radius: 10px;
+  background: $lightGrey;
+  border-color: $lightGrey;
+  color: #ffffff;
+  border-style: none;
+
+  a {
+    color: #ffffff;
+  }
+}
+
+.btn-secondary:hover,
+.btn-secondary.hover {
+  color: #fff;
+  background-color: darkgrey;
+  border-color: darkgrey;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: $wibookiGreen2;
+  border-color: $wibookiGreen2;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: $wibookiGreen2;
+  border-color: $wibookiGreen2;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: $wibookiGreen2;
+  border-color: $wibookiGreen2;
+}
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.open > .dropdown-toggle.btn-primary:hover,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.open > .dropdown-toggle.btn-primary:focus,
+.btn-primary:active.focus,
+.btn-primary.active.focus,
+.open > .dropdown-toggle.btn-primary.focus {
+  color: #fff;
+  background-color: $wibookiGreen2;
+  border-color: $wibookiGreen2;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  background-image: none;
+}
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus,
+.btn-primary[disabled].focus,
+fieldset[disabled] .btn-primary.focus {
+  background-color: $wibookiGreen2;
+  border-color: $wibookiGreen2;
+}
+
+.dropdown-toggle {
+  @extend .dropdown-menu;
+}
+
+.modal-dialog {
+  .modal-content {
+    .modal-header {
+      border-bottom: 0px;
+      .modal-title {
+        text-align: center;
+      }
+    }
+    .modal-footer {
+      border-top: 0px;
+      padding: 0px;
+    }
+  }
+}
+
+.center-block {
+  float: none;
+}
+
+input[type="radio"] {
+  margin: 4px 5px 0 10px;
+}
+// WIBOOKI ELEMENTS ************************************************************
+
+.profile-nav {
+  margin-bottom: 20px;
+}
+
+.profile-nav > li > a {
+  padding: 0 10px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+}
+
+.profile-nav > li.active > a, .profile-nav > li.active > a:hover, .profile-nav > li.active > a:focus {
+  background-color: $wibookiGreen;
+  border: 0px;
+}
+
+.container-inside {
+  padding: 40px 0px;
+}
+
+.container-navbar {
+  padding: 8px;
+}
+
+.footer {
+  color: $grey;
+  font-family: $mainFont;
+  font-size: 12px;
+  margin-top: 10px;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  height: 60px;
+}
+
+.wibooki-logo {
+  height: 45px;
+  margin-right: 10px;
+}
+
+.register-container-title{
+  font-family: $secondaryFont;
+  font-weight: bold;
+  font-size: 35px;
+  line-height: 37px;
+  color: $black;
+  padding-bottom: 20px;
+}
+
+.wide-container-title {
+  @extend .register-container-title;
+  text-align: center;
+}
+
+.register-error > ul {
+  margin-bottom: 0px;
+  list-style-type: none;
+  margin-left: -40px;
+  text-align: center;
+  font-family: $mainFont;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgb(235,80,95);
+}
+
+#cookie-law-info-bar {
+  font-family: $mainFont;
+  font-size: 12px;
+  color: $grey;
+
+  margin: 5% 10%;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  background-color: $brokenWhite;
+
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+}
+
+#cookie-law-close-button > .btn {
+  background-color: $brokenWhite;
+}
+
+.cookie-image {
+  width: 95px;
+  margin-top: -25px;
+}
+
+.about-image {
+  max-width: 95px;
+}
+
+.padding-0 {
+  padding: 0;
+}
+
+.full-width
+{
+  width: 100%;
+}
+
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+.narrow-box-form {
+  width: 250px;
+}
+
+.wide-box-form {
+  max-width: 400px;
+}
+
+.footer-icon {
+  text-align: center;
+  padding: 2px;
+}
+
+.left-column .rounded-border-content {
+  h1 {
+    font-size: 20px;
+    font-weight: 100;
+    margin: 0;
+    text-align: center;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 100;
+    margin: 0;
+    text-align: center;
+  }
+}
+
+.rounded-border-content {
+  border-radius: 10px;
+  border: solid 1px #b4b4b4;
+  padding: 10px 7px 25px;
+}
+
+
+.dropdown-menu-avatar {
+  max-width:30px;
+  max-height:30px;
+  width: auto;
+  height: auto;
+  margin-right: 10px;
+  margin-left: 20px;
+  border: 0 none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.img-center {
+  margin:0 auto;
+}
+
+.achievement .image {
+  background-size: 150px;
+  width: 150px;
+  height: 150px;
+}
+
+.add-button {
+  //padding-bottom: 5px;
+  //height: 100%;
+  //width: 130px;
+  //margin: 10px;
+  a img {
+    width: 100%;
+  }
+}
+
+.itinerary-cell {
+  @extend .add-button;
+  padding: 10px;
+  //width: 176px;
+  img {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  > div {
+    padding: 0;
+  }
+  > div:nth-child(2) {
+    padding-left: 10px;
+  }
+  h3 {
+    margin-top: 0;
+  }
+}
+
+#profile-upload {
+  display: none;
+}
+
+#profile-upload-link {
+  text-decoration: none;
+}
+
+.panel-blank {
+  border: none;
+  background-color: $white;
+}
+
+.profile-type-account {
+  left: 20px;
+  padding: 20px;
+  width: 100%;
+  position: absolute;
+  top: -6px;
+}
+
+@media(min-width:0px){
+  .padding-account-type {
+    padding: 0px;
+  }
+  .profile-avatar {
+    margin-top: 10px;
+  }
+}
+@media(min-width:320px){
+  .padding-account-type {
+    padding: 0px;
+  }
+  .profile-avatar {
+    margin-top: 20px;
+  }
+}
+@media(min-width:572px){
+  .padding-account-type {
+    padding: 6px;
+  }
+  .profile-avatar {
+    margin-top: 40px;
+  }
+}
+@media(min-width:768px){
+  .profile-avatar {
+    margin-top: 40px;
+  }
+  .about-idea-text {
+    margin-left: -25px;
+  }
+}
+@media(min-width:992px){
+  .profile-avatar {
+    margin-top: 55px;
+  }
+  .about-idea-text {
+    margin-left: -60px;
+  }
+}
+@media(min-width:1200px){
+  .profile-avatar {
+    margin-top: 70px;
+  }
+  .about-idea-text {
+    margin-left: -90px;
+  }
+}
+
+.about-bank-account-text {
+  margin: 10px 0px 20px 0px;
+}
+
+.jumbotron {
+  background-color: inherit;
+  margin: 0;
+
+  .vertical-center {
+    margin-bottom: 0; /* Remove the default bottom margin of .jumbotron */
+  }
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for vh unit */
+  min-height: 70vh; /* You might also want to use
+                      'height' property instead.
+
+                      Note that for percentage values of
+                      'height' or 'min-height' properties,
+                      the 'height' of the parent element
+                      should be specified explicitly.
+
+                      In this case the parent of '.vertical-center'
+                      is the <body> element */
+
+  /* Make it a flex container */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  /* Align the bootstrap's container vertically */
+  -webkit-box-align : center;
+  -webkit-align-items : center;
+  -moz-box-align : center;
+  -ms-flex-align : center;
+  align-items : center;
+
+  /* In legacy web browsers such as Firefox 9
+     we need to specify the width of the flex container */
+  width: 100%;
+
+  /* Also 'margin: 0 auto' doesn't have any effect on flex items in such web browsers
+     hence the bootstrap's container won't be aligned to the center anymore.
+
+     Therefore, we should use the following declarations to get it centered again */
+  -webkit-box-pack : center;
+  -moz-box-pack : center;
+  -ms-flex-pack : center;
+  -webkit-justify-content : center;
+  justify-content : center;
+}
+
+.content-action-buttons {
+  padding-top: 30px;
+  text-align: center;
+}
+
+.content-creation-icon {
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.itinerary-content-list {
+  padding-top: 60px;
+}
+
+.itinerary-content-list-icon {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.btn-wibooki {
+  color: #fff;
+  background-color: $wibookiGreen2;
+  border-color: $wibookiGreen2;
+}
+.btn-wibooki:focus,
+.btn-wibooki.focus {
+  color: #fff;
+  background-color: $wibookiGreen2;
+  border-color: #8c8c8c;
+}
+.btn-wibooki:hover {
+  color: #fff;
+  background-color: $wibookiGreen3;
+  border-color: $wibookiGreen3;
+}
+.btn-wibooki:active,
+.btn-wibooki.active,
+.open > .dropdown-toggle.btn-wibooki {
+  color: #fff;
+  background-color: $wibookiGreen2;
+  border-color: $wibookiGreen3;
+}
+.btn-wibooki:active:hover,
+.btn-wibooki.active:hover,
+.open > .dropdown-toggle.btn-wibooki:hover,
+.btn-wibooki:active:focus,
+.btn-wibooki.active:focus,
+.open > .dropdown-toggle.btn-wibooki:focus,
+.btn-wibooki:active.focus,
+.btn-wibooki.active.focus,
+.open > .dropdown-toggle.btn-wibooki.focus {
+  color: #fff;
+  background-color: $wibookiGreen2;
+  border-color: #8c8c8c;
+}
+.btn-wibooki:active,
+.btn-wibooki.active,
+.open > .dropdown-toggle.btn-wibooki {
+  background-image: none;
+}
+.btn-wibooki.disabled:hover,
+.btn-wibooki[disabled]:hover,
+fieldset[disabled] .btn-wibooki:hover,
+.btn-wibooki.disabled:focus,
+.btn-wibooki[disabled]:focus,
+fieldset[disabled] .btn-wibooki:focus,
+.btn-wibooki.disabled.focus,
+.btn-wibooki[disabled].focus,
+fieldset[disabled] .btn-wibooki.focus {
+  background-color: $wibookiGreen2;
+  border-color: $wibookiGreen3;
+}
+.btn-wibooki .badge {
+  color: $wibookiGreen2;
+  background-color: #333;
+}

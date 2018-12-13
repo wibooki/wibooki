@@ -1,0 +1,30 @@
+header:
+    title:
+        user: '¡Hola @%value%!'
+        admin:
+          payment: '¡Nuevo itinerario adquirido!'
+
+footer:
+    title: 'Atentamente,'
+    team: 'El equipo wibooki.'
+    close: 'Si tienes cualquier duda, problema o sugerencia, escríbenos a info@wibooki.com o contáctanos a través de nuestras redes sociales. Te responderemos lo antes posible.'
+
+payment:
+    buy:
+        title: 'Has adquirido correctamente el itinerario %value%'
+        subtitle: 'Estos son los detalles de tu compra:'
+        itinerary: 'Itinerario: %value%'
+        price: 'Precio: %value%'
+        date: 'Fecha: %value%'
+        free: 'Gratuito'
+        description:
+            1: 'Todos los itinerarios que has adquirido se encuentran accesibles desde la sección "Itinerarios" de tu perfil.'
+            2: 'Gracias por comprar en <a href="%url%" style="color: #94bd0d;text-decoration: none;">Wibooki</a>. Para cambios y devoluciones, por favor, consulta nuestras <a href="%tyc%" style="color: #94bd0d;text-decoration: none;">Condiciones de compra</a>'
+
+    admin:
+        title: '<a href="%uurl%" style="color: #94bd0d;text-decoration: none;">@%user%</a> acaba de adquirir el itinerario <a href="%iurl%" style="color: #94bd0d;text-decoration: none;">%value%</a>'
+        subtitle: 'Estos son los detalles de tu compra:'
+        id: 'Pedido ID: %value%'
+        itinerary: 'Itinerario: %value%'
+        price: 'Precio: %value%'
+        date: 'Fecha: %value%'

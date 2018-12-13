@@ -1,0 +1,39 @@
+button:
+  buy: Comprar
+  free: Comprar
+  edit: Editar
+  delete: Borrar
+  back: Volver
+  login: Comprar <br> (Debes iniciar sesión)
+form:
+  price:
+    label: Precio
+    placeholder: Precio
+  free:
+    value: Gratuito
+  paid:
+    value: De Pago
+  private:
+    value: Privado
+  copied:
+    value: Adquirido
+public:
+  list:
+    empty: No hay ningún itinerario disponible
+mail:
+  admin:
+    title: Nueva compra de itinerario
+buy:
+  popup:
+    paid:
+      title: Importe
+      iva: '*I.V.A. incluido'
+    method:
+      title: Selecciona un método de pago
+      paypal: 'PayPal (acepta tarjeta bancaria)'
+      description: 'El método PayPal no necesita que aportes información adicional.'
+      accept: 'En el momento en el que puse el botón aceptar será redirigido a la web de PayPal donde se realizará el pago.'
+      terms: 'Acepto los <a href="" target="blank">Términos y condiciones</a> de compra y la <a href="" target="blank">Política de privacidad</a>.'
+    free:
+      title: Itinerario gratuito
+      description: Podrás disfrutar de él de forma gratuita por cortesía de su creador.

@@ -1,0 +1,12 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+    <div class="row">
+        <div class="col-sm-7 vcenter">
+            <img src="{{ asset('images/homepage/bienvenida-wibooki.jpg') }}" alt="" class="img-responsive"/>
+        </div><!--
+        --><div class="col-sm-5 register-container vcenter">
+            {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+        </div>
+    </div>
+{% endblock fos_user_content %}

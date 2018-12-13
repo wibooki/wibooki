@@ -1,0 +1,21 @@
+<div class="achievement_container">
+    <div class="achievement_content">
+        {% if achievements is empty %}
+            Todavía no tienes ningún logro.
+        {% else %}
+            {%- if category is defined %}
+                <h2 class="latest_achievements">{{ ('achievements.category.' ~ category)|trans }}</h2>
+            {%- endif %}
+            {%- for achievement in achievements %}
+                <div class="achievement lockedAchievement">
+                    <div class="image" style="background-image: url('{{ asset(achievement.options.image) }}')"></div>
+                    <div class="title">{{ achievement.options.name|trans }}</div>
+                    <div class="description">{{ achievement.options.description|trans }}</div>
+                    {%- if achievement.userAchievement.completeAt is null %}
+                        <div class="progress" style="width: {{ achievement.userAchievement.progress/achievement.options.value *100 }}%"></div>
+                    {%- endif %}
+                </div>
+            {%- endfor %}
+        {% endif %}
+    </div>
+</div>

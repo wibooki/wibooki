@@ -1,0 +1,4 @@
+payment:
+    description: 'Compra itinerario WiBooki'
+    error:
+        pending: 'El pago no se ha podido completar. Por favor, póngase en contacto con nuestro equipo de soporte técnico.'

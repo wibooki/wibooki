@@ -1,0 +1,44 @@
+registration:
+    email:
+        subject: 'Validación del registro'
+
+resetting:
+    forgot_password:
+        label: '¿Olvidaste tu contraseña?'
+    request:
+        submit: 'Enviar'
+        username: 'Nombre de usuario'
+    reset:
+        submit: 'Guardar'
+    check_email: |
+        Te hemos enviado un correo electrónico con el enlace de activación para restablecer tu contraseña. Si no lo recibes, comprueba tu carpeta de correo no deseado o inténtalo de nuevo.
+
+        Nota: Solo puedes solicitar una nueva contraseña en el plazo de 24 horas.
+security:
+    login:
+        username: 'Nombre de usuario'
+        password: 'Contraseña'
+        remember_me: 'Recordar contraseña'
+layout:
+    logout: 'Cerrar sesión'
+    admin: Panel Admin.
+
+change_password:
+    submit: 'Guardar'
+
+profile:
+    submit: 'Guardar'
+    cancel: 'Cancelar'
+
+payments:
+    title: Pagos
+    subtitle: Con tu cuenta de PayPal configurada podremos realizarte los pagos.
+    paypal:
+        label:
+        placeholder: Cuenta Paypal
+
+buy:
+    popup:
+        title: Proceso de compra
+        private:
+            description: Este itinerario es público por lo que no tiene coste de adquisición. Pasarás a disponer del itinerario y sus contenidos para tu uso de forma privada.

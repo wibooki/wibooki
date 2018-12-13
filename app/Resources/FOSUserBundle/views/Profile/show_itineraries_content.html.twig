@@ -1,0 +1,40 @@
+{% for flash_message in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flash_message }}
+    </div>
+{% endfor %}
+
+{#{% if itinerary_form is defined %}#}
+{#<div class="row">#}
+    {#<div class="col-sm-12 rounded-border-content add-button">#}
+        {#<a data-toggle="modal" href="#" data-target="#itinerariesCreationPopup">#}
+            {#<img class="img-center" src="{{ asset('images/profile/add-button.svg') }}" alt="Añadir"/>#}
+            {#<p>Nuevo itinerario</p>#}
+        {#</a>#}
+    {#</div>#}
+{#</div>#}
+{#{% endif %}#}
+
+<div class="row">
+    {% if itinerary_form is defined %}
+    <div class="col-sm-3">
+        <div class="col-sm-12 rounded-border-content add-button">
+            <a data-toggle="modal" href="#" data-target="#itinerariesCreationPopup">
+                <img class="img-center" src="{{ asset('images/icons/add-itinerary.svg') }}" alt="Añadir"/>
+                <p style="text-align: center;">Nuevo itinerario</p>
+            </a>
+        </div>
+    </div>
+    {% endif %}
+    {% for itinerary in user.itineraries %}
+        {% include 'itinerary/_itinerary_list.html.twig' %}
+    {% else %}
+    <div class="col-sm-9">
+        {{ 'public.list.empty'|trans({},'itinerary') }}
+    </div>
+    {% endfor %}
+</div>
+
+{% if itinerary_form is defined %}
+    {% include "itinerary/_new_modal.html.twig" %}
+{% endif %}

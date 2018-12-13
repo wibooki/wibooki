@@ -1,0 +1,17 @@
+payum:
+    security:
+        token_storage:
+            AppBundle\Entity\PaymentToken: { doctrine: orm }
+
+    storages:
+        AppBundle\Entity\Payment: { doctrine: orm }
+
+    gateways:
+        offline:
+            factory: offline
+        paypal_express_checkout:
+            factory: paypal_express_checkout
+            username:   '%payum_username%'
+            password:   '%payum_password%'
+            signature:  '%payum_signature%'
+            sandbox:    '%payum_sandbox%'

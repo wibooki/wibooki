@@ -1,0 +1,12 @@
+title:
+  Resultados de búsqueda para "%key%"
+itinerary:
+  title: '{0}No se han encontrado itinerarios|{1}Se ha encontrado %count% itinerario|]1,Inf[Se han encontrado %count% itinerarios'
+content:
+  title: '{0}No se han encontrado contenidos|{1}Se ha encontrado %count% contenido|]1,Inf[Se han encontrado %count% contenidos'
+user:
+  title: '{0}No se han encontrado usuarios|{1}Se ha encontrado %count% usuario|]1,Inf[Se han encontrado %count% usuarios'
+form:
+  keyword:
+    label:
+    placeholder: Busca por título o descripción

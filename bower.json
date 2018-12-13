@@ -1,0 +1,21 @@
+{
+  "name": "wibooki",
+  "version": "0.0.1",
+  "authors": [
+    ""
+  ],
+  "license": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "fontawesome#^4.7.0",
+    "jquery-validation": "^1.16.0"
+  }
+}

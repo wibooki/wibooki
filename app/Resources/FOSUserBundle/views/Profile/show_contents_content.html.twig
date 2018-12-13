@@ -1,0 +1,42 @@
+{#{% if itinerary_form is defined %}#}
+{#<div class="row">#}
+    {#<div class="col-sm-12 rounded-border-content add-button">#}
+        {#<a data-toggle="modal" href="{{ path('content_new') }}">#}
+            {#<img class="img-center" src="{{ asset('images/profile/add-button.svg') }}" alt="Añadir"/>#}
+            {#<p>Nuevo contenido</p>#}
+        {#</a>#}
+    {#</div>#}
+{#</div>#}
+{#{% endif %}#}
+
+<div class="row">
+    {% if itinerary_form is defined %}
+    <div class="col-sm-3">
+        <div class="col-sm-12 rounded-border-content add-button">
+            <a data-toggle="modal" href="{{ path('content_new') }}">
+                <img class="img-center" src="{{ asset('images/icons/add-content.svg') }}" alt="Añadir"/>
+                <p style="text-align: center;">Nuevo contenido</p>
+            </a>
+        </div>
+    </div>
+    {% endif %}
+    {#{% for row in user.contents|batch(3) %}#}
+    {% for content in user.contents %}
+        {#{% for content in row %}#}
+        {% include 'content/_content_list.html.twig' %}
+
+        {#<div class="col-md-3 itinerary-cell rounded-border-content">#}
+            {#<a href="{{ path('content_show', { 'slug': content.slug }) }}">#}
+                {#<img src="{{ asset('images/icons/default-content.svg') }}" alt="Contenido"/>#}
+                {#{{ content.title }}<br/>#}
+                {#{{ content.description }}#}
+            {#</a>#}
+            {#{% if content.parent %}#}
+                {#{{ 'form.private.value'|trans({},'itinerary')|upper }}#}
+            {#{% endif %}#}
+        {#</div>#}
+        {#{% endfor %}#}
+    {% else %}
+        {{ 'public.list.empty'|trans({},'content') }}
+    {% endfor %}
+</div>

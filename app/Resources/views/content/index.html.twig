@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Contents list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>Creationdate</th>
+                <th>Lastmodificationdate</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Content</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for content in contents %}
+            <tr>
+                <td><a href="{{ path('content_show', { 'slug': content.slug }) }}">{{ content.id }}</a></td>
+                <td>{{ content.image }}</td>
+                <td>{% if content.creationDate %}{{ content.creationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if content.lastModificationDate %}{{ content.lastModificationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ content.title }}</td>
+                <td>{{ content.description }}</td>
+                <td>{{ content.content }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('content_show', { 'id': content.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('content_edit', { 'id': content.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('content_new') }}">Create a new content</a>
+        </li>
+    </ul>
+{% endblock %}

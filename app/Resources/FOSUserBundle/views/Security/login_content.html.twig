@@ -1,0 +1,53 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="jumbotron vertical-center">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-sm-12 register-container">
+                <div class="center-block wide-box-form">
+                    <div class="wide-container-title">
+                        Acceso restringido a la versión de prueba
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Iniciar sesión</div>
+                        <div class="panel-body">
+                            <form action="{{ path('fos_user_security_check') }}" method="post" class="fos_user_resetting_request homepage form-horizontal">
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                                <div class="input-field col s12 ">
+                                    <input class="form-control" type="text" id="username" name="_username" required="required" value="{{ last_username }}" placeholder="{{ 'security.login.username'|trans }}"/>
+                                </div>
+                                <div class="input-field col s12 ">
+                                    <input class="form-control" type="password" id="password" name="_password" required="required" placeholder="{{ 'security.login.password'|trans }}"/>
+                                </div>
+                                <div class="input-field col s12 ">
+                                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                                    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                                </div>
+                                <div class="input-field col s12 pb-20">
+                                    <a href="{{ path('fos_user_resetting_request') }}">{{ 'resetting.forgot_password.label'|trans }}</a>
+                                </div>
+                                <div align="center" class="button-wrap">
+                                    <button class="btn-m btn-primary" type="submit" name="action">
+                                        {{ 'security.login.submit'|trans }}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {% if error %}
+                        <div class="row">
+                            <div class="col-sm-12 register-error">
+                                <ul>
+                                    <li>
+                                        {{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

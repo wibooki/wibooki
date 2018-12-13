@@ -1,0 +1,7 @@
+public:
+  list:
+    empty: No hay ningún contenido disponible
+
+form:
+  demo:
+    label: Visible como demo

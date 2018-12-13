@@ -1,0 +1,24 @@
+default:
+    formatters:
+        pretty:
+            verbose:  true
+            paths:    false
+            snippets: false
+    suites:
+        homepage:
+            paths:    [ %paths.base%/features/homepage ]
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - AppBundle\Behat\Context\WebContext
+                # App\ModuleUser\Bundle\ModuleUserBundle\Behat\Context\AuthenticationContext
+
+    extensions:
+        Behat\MinkExtension:
+            sessions:
+                default:
+                    symfony2: ~
+                javascript:
+                    selenium2: ~
+            browser_name: firefox
+            show_auto:    false
+        Behat\Symfony2Extension: ~

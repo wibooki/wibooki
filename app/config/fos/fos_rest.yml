@@ -1,0 +1,71 @@
+#fos_rest:
+#    disable_csrf_role: ROLE_API
+#    serializer:
+#        serialize_null: true
+#    view:
+## default_engine: php
+#        view_response_listener: true
+#        force_redirects:
+#          html: true
+## xml: true
+#        formats:
+#            json: true
+#            xml: true
+#            rss: false
+#        templating_formats:
+#            html: false
+#        mime_types:
+#            json: ['application/json', 'application/x-json', 'application/vnd.example-com.foo+json']
+#            rss: 'application/rss+xml'
+#            jpg: 'image/jpeg'
+#            png: 'image/png'
+#        failed_validation: HTTP_BAD_REQUEST
+#        default_engine: twig
+#    body_listener: true
+#    param_fetcher_listener: true
+#    allowed_methods_listener: true
+#    access_denied_listener:
+#        json: true
+#    format_listener:
+#        rules:
+##          - { path: '^/', priorities: ['json', 'xml', 'html'], fallback_format: json, prefer_extension: true }
+#          - { path: '^/', priorities: ['json', 'xml'], fallback_format: json, prefer_extension: true }
+#    routing_loader:
+#        default_format: ~
+#    exception:
+#        codes:
+#            'Symfony\Component\Routing\Exception\ResourceNotFoundException': 404
+#        messages:
+#            'Symfony\Component\Routing\Exception\ResourceNotFoundException': true
+
+fos_rest:
+    disable_csrf_role: ROLE_API
+#    body_listener: true
+    body_listener:
+        decoders:
+            json: fos_rest.decoder.jsontoform
+    body_converter:
+        enabled: true
+        validate: true
+        validation_errors_argument: validationErrors
+    format_listener: true
+    format_listener:
+        rules:
+            - priorities: [json, xml]
+            - fallback_format: json
+    param_fetcher_listener:
+        enabled:  true
+        force:    true
+    routing_loader:
+        default_format: json
+    view:
+        view_response_listener: 'force'
+        formats:
+           xml: true
+           json : true
+        templating_formats:
+            html: false
+        view_response_listener: true
+
+framework:
+    serializer: { enable_annotations: true }

@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    <div class="fos_user_user_show content">
+        <div class="row">
+            <div class="col-xs-5 col-sm-3 left-column">
+                <div class="col-sm-12 rounded-border-content">
+                    {{ form_start(form, { 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <p>
+                            <div class="col-sm-12">
+                                <img class="img-responsive img-center content-creation-icon" src="{{ asset('images/icons/default-content.svg') }}">
+                            </div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="input-field col s12 {% if form_errors(form.title) %}has-error{% endif %}">
+                                {{ form_widget(form.title, { 'attr': {'class':'form-control', 'placeholder': 'Título contenido'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            <div class="input-field col s12 {% if form_errors(form.description) %}has-error{% endif %}">
+                                {{ form_widget(form.description, { 'attr': {'rows' : '5', 'class':'form-control', 'placeholder': 'Descripción'}}) }}
+                            </div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            <div class="input-field col s12 {% if form_errors(form.itineraries) %}has-error{% endif %}">
+                                {{ form_widget(form.itineraries, { 'attr': {'class':'form-control'}}) }}
+                            </div>
+                            </p>
+                        </div>
+                    </div>
+                    {# Esta es la parte de edición de itinerarios dinámicos #}
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                                <div class="input-field col s12 {% if form_errors(form.demo) %}has-error{% endif %}">
+                                    {{ form_label(form.demo) }}
+                                    {{ form_widget(form.demo, { 'attr': {'class':'form-control'}}) }}
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p class="content-action-buttons">
+                                <a href="{{ path('fos_user_profile_show') }}">
+                                    <button type="button" class="btn btn-default"
+                                        data-dismiss="modal">
+                                        Cancelar
+                                    </button>
+                                </a>
+                                <button type="submit" class="btn btn-default">
+                                    Guardar
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-7 col-sm-9">
+                <div class="col-sm-12 rounded-border-content">
+                    <h2>Nuevo contenido</h2>
+                    {{ form_widget(form.contentText) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ asset('js/addItineraryLink.js'|asset_version) }}"></script>
+
+{% endblock %}

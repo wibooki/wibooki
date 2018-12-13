@@ -1,0 +1,14 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <div class="container-inside text-center">
+        <h1>Felicidades {{ user.username }}, tu cuenta ha sido validada.</h1>
+        <div class="row">
+            <div class="col-sm-12">
+                Ya formas parte de la comunidad wibooki. Próximamente nos pondremos en contacto contigo para darte acceso a la versión de pruebas de la plataforma. Mientras tanto, puedes enviarnos todo tipo de sugerencias a <a href="mailto:info@wibooki.com">info@wibooki.com.</a>
+            </div>
+        </div>
+    </div>
+{% endblock fos_user_content %}

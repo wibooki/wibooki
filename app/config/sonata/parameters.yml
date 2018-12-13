@@ -1,0 +1,12 @@
+#
+# ADmin Parameters
+#
+parameters:
+
+    # Dashboard configuration
+    admin.dashboard.title:      XSF
+    admin.dashboard.logo:       /images/logo-xandrusoft-pink-45.png
+
+    # Analytics
+#    admin.analytics.ga.ua:      UA-xxxxxxxx-1
+#    admin.analytics.ga.domain:  xsfmeta.dev

@@ -1,0 +1,40 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+    schemes:  [https]
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_user_profile_delete:
+    path: /profile/delete
+    defaults: { _controller: FOSUserBundle:Profile:delete }
+
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"
+
+api:
+    type:     rest
+    prefix:   /api
+    options: { i18n: false }
+    defaults: {_format: json}
+#    host:     api.wibooki.com
+#    schemes:  [https]
+    resource: "@AppBundle/Resources/config/routes.yml"
+
+#NelmioApiDocBundle:
+#    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+#    prefix:   /api/doc
+#    schemes:  [https]
+
+payum_all:
+    resource: "@PayumBundle/Resources/config/routing/all.xml"
+
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin

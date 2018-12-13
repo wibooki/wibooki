@@ -1,0 +1,52 @@
+{% trans_default_domain 'mail' %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="height: 100% !important;">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/emails/registration/style.css')) }}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+</head>
+<body class="with-preloader" style="font-family: &quot;Titillium Web&quot; sans-serif;font-size: 16px;color: #505050;font-weight: 600;line-height: 20px;text-align: left;margin-bottom: 10px;">
+
+<div style="margin: 0 auto ; margin-top: 30px; width:100px;">
+    <a target="_blank" href="#" style="color: #94bd0d;text-decoration: none;">
+        <img border="0" width="100px" src="{{ absolute_url(asset('images/emails/registration/logo.png')) }}" style="border: 0;">
+    </a>
+</div>
+
+<div style="margin: 0 auto ; margin-top: 30px; width:500px;">
+    <h1 style="font-family: 'Montserrat', sans-serif;color: #000000;font-weight: 700;font-size: 35px;line-height: 37px;text-align: center;margin-bottom: 30px;">
+        {% block headerContent %}{% endblock headerContent %}
+    </h1>
+</div>
+
+
+{% block bodyContent %}{% endblock bodyContent %}
+
+<div style="margin: 0 auto ; margin-top: 30px; width:500px;">
+    <p style="margin-top: 30px;margin-bottom: 10px;">{{ 'footer.close'|trans({}) }}</p>
+    <p style="margin-bottom: 10px;">{{ 'footer.title'|trans({}) }}<br>{{ 'footer.team'|trans({}) }}</p>
+</div>
+<div style="margin: 0 auto ; margin-top: 30px; width:150px;">
+    <a target="_blank" href="http://www.facebook.com/wibooki/" style="color: #94bd0d;text-decoration: none; font-size: 15px;">
+        <img border="0" width="30px" style="padding-right: 5px;border: 0;" src="{{ absolute_url(asset('images/emails/registration/facebook-icon.png')) }}">
+    </a>
+    <a target="_blank" href="http://www.twitter.com/wibooki/" style="color: #94bd0d;text-decoration: none; font-size: 15px;">
+        <img border="0" width="30px" style="padding-right: 5px;border: 0;" src="{{ absolute_url(asset('images/emails/registration/twitter-icon.png')) }}">
+    </a>
+    <a target="_blank" href="http://www.youtube.com/wibooki/" style="color: #94bd0d;text-decoration: none; font-size: 15px;">
+        <img border="0" width="30px" style="padding-right: 5px;border: 0;" src="{{ absolute_url(asset('images/emails/registration/youtube-icon.png')) }}">
+    </a>
+    <a target="_blank" href="http://www.pinterest.com/wibooki/" style="color: #94bd0d;text-decoration: none; font-size: 15px;">
+        <img border="0" width="30px" src="{{ absolute_url(asset('images/emails/registration/pinterest-icon.png')) }}" style="border: 0;">
+    </a>
+</div>
+<div style="margin: 0 auto ; margin-top: 0px; width:500px;">
+    <p style="text-align: center;margin-bottom: 10px;">
+        <a href="www.wibooki.com" style="color: #94bd0d;text-decoration: none;">www.wibooki.com</a>
+    </p>
+</div>
+
+</body>
+</html>

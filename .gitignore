@@ -1,0 +1,107 @@
+/app/config/parameters.yml
+/build/
+/phpunit.xml
+/var/*
+!/var/cache
+/var/cache/*
+!var/cache/.gitkeep
+!/var/logs
+/var/logs/*
+!var/logs/.gitkeep
+!/var/sessions
+/var/sessions/*
+!var/sessions/.gitkeep
+!var/SymfonyRequirements.php
+/vendor/
+/web/bundles/
+/bin/*
+!bin/console
+!bin/symfony_requirements
+
+# User uploaded files
+!/web/uploads/
+/web/uploads/*
+
+# From ----------------------------------------------------------------------------------------------------
+# https://knpuniversity.com/screencast/gulp/sass#play
+# ---------------------------------------------------------------------------------------------------------
+/app/bootstrap.php.cache
+/composer.phar
+/node_modules
+/bower_components
+/web/css
+/web/js
+/web/fonts
+/web/images
+/app/Resources/assets/rev-manifest.json
+
+# From ----------------------------------------------------------------------------------------------------
+# http://symfony.es/documentacion/como-configurar-bien-el-archivo-gitignore-para-las-aplicaciones-symfony2/
+# ---------------------------------------------------------------------------------------------------------
+
+# -- Editores -----------------------------------------
+# vim
+.*.sw[a-z]
+*.un~
+Session.vim
+.netrwhist
+
+# eclipse
+*.pydevproject
+.project
+.metadata
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+.externalToolBuilders/
+*.launch
+.buildpath
+
+# phpstorm
+.idea/
+
+# textmate
+*.tmproj
+*.tmproject
+tmtags
+
+# sublimetext
+/*.sublime-project
+*.sublime-workspace
+
+# netbeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# -- Sistemas Operativos ------------------------------
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+!.gitignore
+!.htaccess
+*~
+
+# Mac OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes

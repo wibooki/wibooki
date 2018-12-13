@@ -1,0 +1,15 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+        <div class="container-inside text-center">
+            <h1>La cuenta se ha creado satisfactoriamente.</h1>
+            <div class="row">
+                <div class="col-sm-12">
+                    Se ha enviado un correo electrónico a <a href="mailto:{{user.email}}">{{ user.email }}</a>. <br/>
+                    Contiene un enlace de confirmación que debes presionar para validar tu cuenta.
+                </div>
+            </div>
+        </div>
+{% endblock fos_user_content %}

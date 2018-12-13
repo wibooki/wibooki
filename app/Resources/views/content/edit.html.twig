@@ -1,0 +1,143 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    <div class="fos_user_user_show content">
+        <div class="row">
+            <div class="col-xs-5 col-sm-3 left-column">
+                <div class="col-sm-12 rounded-border-content">
+                    {{ form_start(edit_form) }}
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <p>
+                            <div class="col-sm-12">
+                                <img class="img-responsive img-center content-creation-icon" src="{{ asset('images/icons/default-content.svg') }}">
+                            </div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="input-field col s12 {% if form_errors(edit_form.title) %}has-error{% endif %}">
+                                {{ form_widget(edit_form.title, { 'attr': {'class':'form-control', 'placeholder': 'Título contenido'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            <div class="input-field col s12 {% if form_errors(edit_form.description) %}has-error{% endif %}">
+                                {{ form_widget(edit_form.description, { 'attr': {'rows' : '5', 'class':'form-control', 'placeholder': 'Descripción'}}) }}
+                            </div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            <div class="input-field col s12 {% if form_errors(edit_form.itineraries) %}has-error{% endif %}">
+                                {{ form_widget(edit_form.itineraries, { 'attr': {'class':'form-control'}}) }}
+                            </div>
+                            </p>
+                        </div>
+                    </div>
+                    {# Esta es la parte de edición de itinerarios dinámicos #}
+                    {% if form.itineraries is defined %}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            <div class="input-field col s12 {% if form_errors(edit_form.itineraries) %}has-error{% endif %}">
+                                Itinerarios
+                                {% for itinerary in edit_form.itineraries %}
+                                    {{ form_widget(itinerary.title, { 'attr': {'class':'form-control', 'readonly': true}}) }}
+                                {% endfor %}
+                                {% do edit_form.itineraries.setRendered %}
+                                <div class="itineraries" data-prototype="
+                                        {% filter escape %}
+                                            {{ include('content/itinerariesPrototype.html.twig', { 'form': edit_form.itineraries.vars.prototype }) }}
+                                        {% endfilter %}">
+                                </div>
+                            </div>
+                            </p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                            <div class="input-field col s12 {% if form_errors(edit_form.demo) %}has-error{% endif %}">
+                                {{ form_label(edit_form.demo) }}
+                                {{ form_widget(edit_form.demo, { 'attr': {'class':'form-control'}}) }}
+                            </div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="content-action-buttons col-sm-12">
+                            <a href="{{ path('content_show', { 'slug': content.slug }) }}">
+                                <button type="button" class="btn btn-info"
+                                        data-dismiss="modal">
+                                    Ver Contenido
+                                </button>
+                            </a>
+                        </div>
+                        <div class="col-sm-12">
+                            <a data-toggle="modal" href="#" data-target="#contentdeletepopup" class="btn btn-danger">
+                                {#<button type="button" class="btn btn-danger"#}
+                                        {#data-dismiss="modal">#}
+                                    Eliminar
+                                {#</button>#}
+                            </a>
+                            <button type="submit" class="btn btn-wibooki">
+                                Guardar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-7 col-sm-9">
+                <div class="col-sm-12 rounded-border-content">
+                    <h2>Editar contenido</h2>
+                    {{ form_widget(edit_form.contentText) }}
+                    {{ form_end(edit_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contentdeletepopup" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="gridSystemModalLabel">Alerta</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            El contenido se eliminará definitivamente.
+                        </div>
+                        <div class="col-sm-4">
+                            <img class="img-center" src="{{ asset('images/warning-eye.svg') }}" alt="Alerta"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{ form_start(delete_form) }}
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-default btn-wibooki">
+                        Aceptar
+                    </button>
+                    {{ form_end(delete_form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ asset('js/addItineraryLink.js'|asset_version) }}"></script>
+
+{% endblock %}
+

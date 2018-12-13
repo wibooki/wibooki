@@ -1,0 +1,29 @@
+<div class="col-sm-3">
+    {% if content is defined and content.user == app.user %}
+        {% set url = path('content_show', { 'slug': content.slug }) %}
+    {% elseif content.demo == true %}
+        {% set url = path('content_show', { 'slug': content.slug }) %}
+    {% else %}
+        {% set url = '#' %}
+    {% endif %}
+
+    <a href="{{ url }}">
+        <div class="col-md-12 itinerary-cell rounded-border-content">
+            <div class="col-sm-4 add-button">
+                <img class="img-center" src="{{ asset('images/icons/default-content.svg') }}" alt="{{ content.title }}"/>
+            </div>
+            <div class="col-sm-8">
+                <h3>{{ content.title }}</h3>
+                {#<p>{{ itinerary.description|truncate(50)|raw }}</p>#}
+            </div>
+            <div class="col-sm-12">
+                <p>{{ content.description|raw }}</p>
+                <span class="pull-right s12 m6 price">
+                    {% if content.parent %}
+                        {{ 'form.private.value'|trans({},'itinerary')|upper }}
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </a>
+</div>

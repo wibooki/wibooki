@@ -1,0 +1,33 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="col-sm-12 register-container">
+    <div class="center-block wide-box-form">
+        <div class="panel panel-default">
+            <div class="panel-heading">Restablecer contraseña</div>
+            <div class="panel-body">
+                {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+
+                <div class="input-field col s12 {% if form_errors(form.plainPassword.first) %}has-error{% endif %}">
+                    {{ form_widget(form.plainPassword.first, { 'attr': {'class':'form-control', 'placeholder': 'Nueva contraseña'}}) }}
+                </div>
+                <div class="input-field col s12 {% if form_errors(form.plainPassword.second) %}has-error{% endif %}">
+                    {{ form_widget(form.plainPassword.second, { 'attr': {'class':'form-control', 'placeholder': 'Verificar contraseña'}}) }}
+                </div>
+
+                <div align="center" class="button-wrap">
+                    <button class="btn-m btn-primary" type="submit" name="action">
+                        {{ 'resetting.reset.submit'|trans }}
+                    </button>
+                </div>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 register-error">
+                {{ form_errors(form.plainPassword.first) }}
+                {{ form_errors(form.plainPassword.second) }}
+            </div>
+        </div>
+    </div>
+</div>

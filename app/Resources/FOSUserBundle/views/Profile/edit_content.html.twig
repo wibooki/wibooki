@@ -1,0 +1,159 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% for flash_message in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flash_message }}
+    </div>
+{% endfor %}
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-8">
+                        ¿Deseas eliminar tu cuenta y todos los datos asociados?
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="img-center" src="{{ asset('images/warning-eye.svg') }}" alt="Añadir"/>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <a class="btn btn-danger btn-ok">Aceptar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-12">
+    <ul class="nav nav-pills profile-nav">
+        <li class="active">
+            <a href="#config" data-toggle="pill">Configuración</a>
+        </li>
+        <li>
+            <a href="{{ path('fos_user_change_password') }}">Cambiar contraseña</a>
+        </li>
+        <li>
+            <a href="#payments" data-toggle="pill">Pagos</a>
+        </li>
+    </ul>
+    <br/>
+</div>
+<br/>
+<div class="jumbotron vertical-center">
+    <div class="container text-center">
+        {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+        <div class="row tab-content">
+            <div id="config" class="col-sm-12 register-container single-vcenter tab-pane fade in active">
+                <div class="center-block wide-box-form">
+                    <div class="wide-container-title">
+                        Configuración
+                    </div>
+                    <div class="panel panel-default panel-blank">
+                        <div class="panel-body">
+                            <div class="input-field col s12 {% if form_errors(form.username) %}has-error{% endif %}">
+                                {{ form_widget(form.username, { 'attr': {'class':'form-control', 'placeholder': 'Nombre de usuario'}}) }}
+                            </div>
+                            <div class="input-field col s12 {% if form_errors(form.email) %}has-error{% endif %}">
+                                {{ form_widget(form.email, { 'attr': {'class':'form-control', 'placeholder': 'Email'}}) }}
+                            </div>
+                            <div class="input-field col s12 {% if form_errors(form.description) %}has-error{% endif %}">
+                                {{ form_widget(form.description, { 'attr': {'rows' : '5', 'class':'form-control', 'placeholder': 'Descripción'}}) }}
+                            </div>
+                            <div class="input-field col s12 {% if form_errors(form.current_password) %}has-error{% endif %}">
+                                {{ form_widget(form.current_password, { 'attr': {'class':'form-control', 'placeholder': 'Contraseña actual'}}) }}
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="col-sm-4">
+                                        {% if user is defined and user.getProfilePicturePath() is not empty %}
+                                            <img id="configuration-image-upload" class="img-responsive img-center" src="{{ user.getWebProfilePicturePath() }}">
+                                        {% else %}
+                                            <img id="configuration-image-upload" class="img-responsive img-center" src="{{ asset('images/profile/gravatar.svg') }}">
+                                        {% endif %}
+                                    </div><!--
+                                --><div class="col-sm-8 vcenter text-left">
+                                        {{ form_widget(form.profilePictureFile, { 'attr': {'class':'form-control'}, 'id' : 'profile-upload'}) }}
+                                        <a href="" id="profile-upload-link"> Cambiar imagen</a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-offset-2"> </div>
+                            </div>
+                            <br/>
+                            <p>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                            <button class="btn-m btn-primary" type="submit" name="action">
+                                                {{ 'profile.submit'|trans }}
+                                            </button>
+                                    </div>
+                                </div>
+                            </p>
+                            <p>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <a href="{{ path('fos_user_profile_edit') }}">
+                                            <button class="btn-m btn-secondary">
+                                                {{ 'profile.cancel'|trans }}
+                                            </button>
+                                        </a><br>
+                                    </div>
+                                </div>
+                            </p>
+                            <br/>
+                            <br/>
+                            <p>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <a href="#" data-href="{{ path('fos_user_profile_delete') }}" data-toggle="modal" data-target="#confirm-delete">Eliminar cuenta</a><br>
+                                    </div>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="payments" class="col-sm-12 register-container single-vcenter tab-pane fade">
+                <div class="center-block wide-box-form">
+                    <div class="wide-container-title">
+                        {{ 'payments.title'|trans() }}
+                    </div>
+                    <div class="panel panel-default panel-blank">
+                        <p>{{ 'payments.subtitle'|trans() }}</p>
+                        <div class="panel-body">
+                            <div class="input-field col s12 {% if form_errors(form.paypal) %}has-error{% endif %}">
+                                {{ form_widget(form.paypal, { 'attr': {'class':'form-control'}}) }}
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <button class="btn-m btn-primary" type="submit" name="action">
+                                        {{ 'profile.submit'|trans }}
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a href="{{ path('fos_user_profile_edit') }}">
+                                        <button class="btn-m btn-secondary">
+                                            {{ 'profile.cancel'|trans }}
+                                        </button>
+                                    </a><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+
+{% block javascripts %}
+    <script src="{{ asset('js/profileuploadfile.js') }}"></script>
+    <script src="{{ asset('js/deleteuserbutton.js') }}"></script>
+{% endblock %}

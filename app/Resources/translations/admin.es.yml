@@ -1,0 +1,13 @@
+itineraries:
+    menu:
+        title:
+            manager: Sist. Itinerarios
+user:
+    menu:
+        title:
+            manager: Sist. Usuarios
+
+Itinerary: Itinerario
+Content: Contenido
+Payment: Pago
+User: Usuario

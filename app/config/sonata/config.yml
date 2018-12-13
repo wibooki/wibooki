@@ -1,0 +1,37 @@
+
+imports:
+    - { resource: parameters.yml }
+    - { resource: sonata_admin.yml }
+    - { resource: sonata_roles.yml }
+#    - { resource: sonata_media.yml }
+#    - { resource: sonata_translation.yml }
+#    - { resource: sonata_formatter.yml }
+    - { resource: sonata_block.yml }
+
+# Sonata Configuration
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+        sonata.user.block.menu:    # used to display the menu in profile pages
+        sonata.user.block.account: # used to display menu option (login option)
+        sonata.block.service.text: # used to if you plan to use Sonata user routes
+#        expense.admin.expense:
+
+#sonata_doctrine_orm_admin:
+#    templates:
+#      types:
+#        list:
+#          html: MyBundle:Default:list_html.html.twig
+
+
+sonata_doctrine_orm_admin:
+   # default value is null, so doctrine uses the value defined in the configuration
+      entity_manager: ~
+
+#sonata_intl:
+#    timezone:
+#        locales:
+#            es:    Europe/Madrid

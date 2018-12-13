@@ -1,0 +1,29 @@
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+#        sonata.admin.block.dashboard: ~
+#        sonata.admin.block.dashboard.hotel: ~
+
+sonata_admin:
+    dashboard:
+        blocks:
+#            -
+#                position: center
+#                type: sonata.admin.block.dashboard
+#                roles: [ROLE_ADMIN]
+#            -
+#                position: center
+#                type: sonata.admin.block.dashboard.hotel
+#                roles: [ROLE_HOTEL]
+
+services:
+#    sonata.admin.block.dashboard:
+#        class: AppBundle\Block\DashboardBlockService
+#        arguments: [ "sonata.admin.block.dashboard", "@templating", "@app.booking.repository", "@app.hotel.repository", "@app.comment.repository" ]
+#        tags:
+#            - { name: sonata.block }
+#    sonata.admin.block.dashboard.hotel:
+#        class: AppBundle\Block\HotelDashboardBlockService
+#        arguments: [ "sonata.admin.block.dashboard", "@templating", "@router", "@security.token_storage", "@app.booking.repository", "@app.hotel.repository", "@app.comment.repository" ]
+#        tags:
+#            - { name: sonata.block }

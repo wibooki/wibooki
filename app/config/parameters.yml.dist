@@ -1,0 +1,18 @@
+parameters:
+    database_host: database_host
+    database_port: database_port
+    database_name: database_name
+    database_user: database_user
+    database_password: database_password
+    mailer_transport: mail
+    mailer_host: localhost
+    mailer_user: null
+    mailer_password: null
+    mailer_encryption: null
+    mailer_auth_mode: cram-md5
+    mailer_port: 25
+    secret: secret
+    payum_username: payum_username
+    payum_password: payum_password
+    payum_signature: payum_signature
+    payum_sandbox: false

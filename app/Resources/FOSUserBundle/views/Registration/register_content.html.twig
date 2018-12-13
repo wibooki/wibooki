@@ -1,0 +1,45 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="register-container-title">
+    Solicita acceso a la versión de prueba
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Crear cuenta</div>
+    <div class="panel-body">
+        {{ form_start(form, {'method': 'post', 'action': path('homepage'), 'attr': {'class': 'homepage form-horizontal'}}) }}
+
+        <div class="input-field col s12 {% if form_errors(form.username) %}has-error{% endif %}">
+            {{ form_widget(form.username, { 'attr': {'class':'form-control', 'placeholder': 'Nombre de usuario'}}) }}
+        </div>
+        <div class="input-field col s12 {% if form_errors(form.email) %}has-error{% endif %}">
+            {{ form_widget(form.email, { 'attr': {'class':'form-control', 'placeholder': 'Correo electrónico'}}) }}
+        </div>
+        <div class="input-field col s12 {% if form_errors(form.plainPassword.first) %}has-error{% endif %}">
+            {{ form_widget(form.plainPassword.first, {'attr': {'class':'form-control', 'placeholder': 'Contraseña'}}) }}
+        </div>
+        <div class="input-field col s12 {% if form_errors(form.plainPassword.second) %}has-error{% endif %}">
+            {{ form_widget(form.plainPassword.second, {'attr': {'class':'form-control', 'placeholder': 'Repetir contraseña'}}) }}
+        </div>
+
+        <div align="center" class="button-wrap">
+            <button class="btn-m btn-primary" type="submit" name="action">
+                Crear cuenta
+            </button>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+
+    <div class="panel-footer">Al crear una cuenta, aceptas nuestras <a href="{{ path('condiciones-de-uso') }}">Condiciones de uso</a> y la <a href="{{ path('politica-de-privacidad') }}">Política de privacidad</a>.</div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 register-error">
+        {{ form_errors(form.username) }}
+        {{ form_errors(form.email) }}
+        {{ form_errors(form.plainPassword.first) }}
+        {{ form_errors(form.plainPassword.second) }}
+    </div>
+</div>
+

@@ -1,0 +1,20 @@
+{% extends "XsolveCookieAcknowledgementBundle::cookie_acknowledgement_bar.html.twig" %}
+
+{% block xsolve_cookie_message %}
+    <div id="cookie-law-info-bar">
+        <div class="col-sm-2">
+            <img class="cookie-image" src="{{ asset('images/cookie-law-image.png') }}" alt="Imagen galleta" />
+        </div>
+        <div class="col-sm-10 pt-20">
+            Utilizamos <em>cookies</em> para mejorar tu experiencia y nuestros servicios. Si continúas navegando consideramos que aceptas su uso.
+            <br/>Para más información, visita nuestra <a href="#">política de <em>cookies</em></a>.
+        </div>
+        <div id="cookie-law-close-button" class="text-right">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block xsolve_cookie_message_js %}
+    {{ parent() }}
+{% endblock %}

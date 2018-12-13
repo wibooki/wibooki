@@ -1,0 +1,50 @@
+parameters:
+
+services:
+    app.sendmail:
+        class: AppBundle\Service\SendMail
+        arguments:
+            - "@mailer"
+            - "@templating"
+
+    #Repositories
+    app.user.repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+            - AppBundle\Entity\User
+    app.booking.repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+            - AppBundle\Entity\Booking
+    app.itinerary.repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+            - AppBundle\Entity\Itinerary
+    app.content.repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+            - AppBundle\Entity\Content
+    app.payment.repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+            - AppBundle\Entity\Payment
+
+    #Services
+    app.itinerary.service:
+        class: AppBundle\Service\ItineraryService
+        arguments:
+            - "@app.itinerary.repository"
+            - "@app.content.repository"
+            - "@app.sendmail"
+            - "@translator"
+    app.payment.service:
+        class: AppBundle\Service\PaymentService
+        arguments:
+            - "@app.payment.repository"
+            - "@app.sendmail"
+            - "@translator"
